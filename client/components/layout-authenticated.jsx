@@ -11,15 +11,12 @@ export default function LayoutAuthenticated(props) {
   }, []);
 
   async function fetchProfile() {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/test/profile`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:8000/api/test/profile`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
     if (res.ok) {
       const json = await res.json();
       setProfile(json);

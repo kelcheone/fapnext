@@ -19,16 +19,13 @@ export default function SignUp() {
   }
 
   async function handleSubmit() {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`,
-      {
-        method: "POST",
-        body: JSON.stringify(state),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:8000/api/auth/signup`, {
+      method: "POST",
+      body: JSON.stringify(state),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (res.ok) {
       alert("user registered success");
       router.push("/signin");
